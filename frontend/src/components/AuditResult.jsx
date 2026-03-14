@@ -12,6 +12,12 @@ function AuditResult({ result }) {
       <p><b>Compliance Score:</b> {result.compliance_score}%</p>
       <p><b>Risk Level:</b> {result.risk_level}</p>
 
+      <h3>MinerU Parsed Data</h3>
+
+<pre>
+{JSON.stringify(result.mineru_output, null, 2)}
+</pre>
+
       <pre>
         {JSON.stringify(result.structured_data, null, 2)}
       </pre>
