@@ -1,10 +1,19 @@
 from fastapi import FastAPI
-from routes.upload import router as upload_router
+from fastapi.middleware.cors import CORSMiddleware
+from routes.audit import router
 
-app = FastAPI(title="MRD Compliance Audit API")
+app = FastAPI()
 
-app.include_router(upload_router)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(router)
 
 @app.get("/")
 def home():
-    return {"message": "MRD Audit System Running"}
+    return {"message": "Backend running"}
